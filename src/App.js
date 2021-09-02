@@ -1,28 +1,18 @@
-import React,{Fragment} from 'react';
-import { Router,Switch} from 'react-router-dom';
-import history from './routes/history';
+import React from 'react';
+import {Switch,BrowserRouter} from 'react-router-dom';
 import PublicRoute from './routes/PublicRoute';
 import Dashboard from './views/Dashboard';
 import Create from './views/Create';
 
 const App = ()=>{
   return(
-    <Fragment>
-      <Router history={history}>  
+      <BrowserRouter>  
         <Switch>
-          <PublicRoute
-            exact
-            path="/"
-            component={Dashboard}
-          />
-          <PublicRoute
-            exact
-            path="/create"
-            component={Create}
-          />
+          <PublicRoute exact path="/" component={Dashboard} />
+          <PublicRoute exact path="/create" component={Create} />
+          <PublicRoute path="/edit/:id" component={Create} />
         </Switch>
-      </Router>
-    </Fragment>
+      </BrowserRouter>
   )
 }
 
